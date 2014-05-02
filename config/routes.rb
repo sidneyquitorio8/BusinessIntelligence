@@ -4,4 +4,8 @@ BusinessIntelligence::Application.routes.draw do
 
   root :to => 'home#index'
 
+  match "/test" => "home#test1"
+
+  match "/sql" => "home#sql"
+
 end

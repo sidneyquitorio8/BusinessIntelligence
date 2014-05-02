@@ -1,11 +1,22 @@
 $(document).ready(function() {
 
 	var filters = [];
+
 	// var store = {};
 	// store['dimension'] = 'store';
-	// store['attributes'] = ["state", "city"];
-	// store['choices'] = ['San Jose', 'San Francisco'];
+	// store['attributes'] = ["store_state", "store_street_address"];
+	// store['choices'] = {};
+	// store['choices']['store_state'] = ['CA', 'NY'];
+	// store['choices']['store_street_address'] = ['1 Washington Square', '12 Twin Dolphin Rd'];
 	// filters.push(store);
+
+	// var product = {};
+	// product['dimension'] = 'product';
+	// product['attributes'] = ["brand", "subcategory"];
+	// product['choices'] = {};
+	// product['choices']['brand'] = ['Kellog', 'Kraft'];
+	// product['choices']['subcategory'] = ['Candy'];
+	// filters.push(product);
 
 	//used for checking if the dimension is already in the filter
 	function dimensionInFilter(dimension) {
