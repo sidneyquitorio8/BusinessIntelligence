@@ -18,25 +18,125 @@
 <div class="container theme-showcase" role="main">
 	<div class="row">
 	  <div class="col-md-4">
-	  	<p><button id="store_dimension" type="button" class="btn btn-default btn-lg dimension">Store</button></p>
+	  	<p><button id="store_dimension" data-dimension='store' type="button" class="btn btn-default btn-lg dimension">Store</button></p>
 
-	  	<p><button type="button" style='visibility:hidden' class="btn btn-default btn-sm attribute store_attributes">Region</button></p>
-	  	<p><button type="button" style='visibility:hidden' class="btn btn-default btn-sm attribute store_attributes">City</button></p>
-	  	<p><button type="button" style='visibility:hidden' class="btn btn-default btn-sm attribute store_attributes">State</button></p>
+	  	<p><button id='name' data-dimension='store' type="button" style='visibility:hidden' class="btn btn-default btn-sm attribute store_attributes" data-toggle="modal" data-target="#myModal1">Name</button></p>
+	  	<p><button id='store_number' data-dimension='store' type="button" style='visibility:hidden' class="btn btn-default btn-sm attribute store_attributes" data-toggle="modal" data-target="#myModal2">Number</button></p>
+	  	<p><button id='store_street_address' data-dimension='store' type="button" style='visibility:hidden' class="btn btn-default btn-sm attribute store_attributes">Address</button></p>
+	  	<p><button id='city' data-dimension='store' type="button" style='visibility:hidden' class="btn btn-default btn-sm attribute store_attributes">City</button></p>
+	  	<p><button id='store_county' data-dimension='store' type="button" style='visibility:hidden' class="btn btn-default btn-sm attribute store_attributes">County</button></p>
+	  	<p><button id='store_state' data-dimension='store' type="button" style='visibility:hidden' class="btn btn-default btn-sm attribute store_attributes">State</button></p>
+	  	<p><button id='store_zip' data-dimension='store' type="button" style='visibility:hidden' class="btn btn-default btn-sm attribute store_attributes">Zip</button></p>
+	  	<p><button id='sales_district' data-dimension='store' type="button" style='visibility:hidden' class="btn btn-default btn-sm attribute store_attributes">District</button></p>
+	  	<p><button id='sales_region' data-dimension='store' type="button" style='visibility:hidden' class="btn btn-default btn-sm attribute store_attributes">Region</button></p>
+	  	<p><button id='store_manager' data-dimension='store' type="button" style='visibility:hidden' class="btn btn-default btn-sm attribute store_attributes">Manager</button></p>
+	  	<p><button id='store_phone' data-dimension='store' type="button" style='visibility:hidden' class="btn btn-default btn-sm attribute store_attributes">Phone</button></p>
+	  	<p><button id='store_FAX' data-dimension='store' type="button" style='visibility:hidden' class="btn btn-default btn-sm attribute store_attributes">Fax</button></p>
+	  	<p><button id='floor_plan_type' data-dimension='store' type="button" style='visibility:hidden' class="btn btn-default btn-sm attribute store_attributes">Floor Plan</button></p>
+	  	<p><button id='photo_processing_type' data-dimension='store' type="button" style='visibility:hidden' class="btn btn-default btn-sm attribute store_attributes">Photo Processing Type</button></p>
+	  	<p><button id='finance_services_type' data-dimension='store' type="button" style='visibility:hidden' class="btn btn-default btn-sm attribute store_attributes">Finance Services Type</button></p>
+	  	<p><button id='first_opened_date' data-dimension='store' type="button" style='visibility:hidden' class="btn btn-default btn-sm attribute store_attributes">First Opened Date</button></p>
+	  	<p><button id='last_remodel_date' data-dimension='store' type="button" style='visibility:hidden' class="btn btn-default btn-sm attribute store_attributes">Last Remodel Date</button></p>
+	  	<p><button id='store_sqft' data-dimension='store' type="button" style='visibility:hidden' class="btn btn-default btn-sm attribute store_attributes">Store Square Feet</button></p>
+	  	<p><button id='grocery_sqft' data-dimension='store' type="button" style='visibility:hidden' class="btn btn-default btn-sm attribute store_attributes">Grocery Square Feet</button></p>
+	  	<p><button id='frozen_sqft' data-dimension='store' type="button" style='visibility:hidden' class="btn btn-default btn-sm attribute store_attributes">Frozen Square Feet</button></p>
+	  	<p><button id='meat_sqft' data-dimension='store' type="button" style='visibility:hidden' class="btn btn-default btn-sm attribute store_attributes">Meat Sqaure Feet</button></p>
 	  </div>
 	  <div class="col-md-4">
-	  	<p><button id="product_dimension" type="button" class="btn btn-default btn-lg dimension">Product</button></p>
+	  	<p><button id="product_dimension" data-dimension='product' type="button" class="btn btn-default btn-lg dimension">Product</button></p>
 
-	  	<p><button type="button" style='visibility:hidden' class="btn btn-default btn-sm attribute product_attributes">SKU</button></p>
-	  	<p><button type="button" style='visibility:hidden' class="btn btn-default btn-sm attribute product_attributes">Brand</button></p>
-	  	<p><button type="button" style='visibility:hidden' class="btn btn-default btn-sm attribute product_attributes">Name</button></p>
+	  	<p><button id='description' data-dimension='product' type="button" style='visibility:hidden' class="btn btn-default btn-sm attribute product_attributes">Description</button></p>
+	  	<p><button id='full_description' data-dimension='product' type="button" style='visibility:hidden' class="btn btn-default btn-sm attribute product_attributes">Full Description</button></p>
+	  	<p><button id='SKU_number' data-dimension='product' type="button" style='visibility:hidden' class="btn btn-default btn-sm attribute product_attributes">SKU</button></p>
+	  	<p><button id='package_size' data-dimension='product' type="button" style='visibility:hidden' class="btn btn-default btn-sm attribute product_attributes">Package Size</button></p>
+	  	<p><button id='brand' data-dimension='product' type="button" style='visibility:hidden' class="btn btn-default btn-sm attribute product_attributes">Brand</button></p>
+	  	<p><button id='subcategory' data-dimension='product' type="button" style='visibility:hidden' class="btn btn-default btn-sm attribute product_attributes">Sub Category</button></p>
+	  	<p><button id='category' data-dimension='product' type="button" style='visibility:hidden' class="btn btn-default btn-sm attribute product_attributes">Category</button></p>
+	  	<p><button id='department' data-dimension='product' type="button" style='visibility:hidden' class="btn btn-default btn-sm attribute product_attributes">Department</button></p>
+	  	<p><button id='package_type' data-dimension='product' type="button" style='visibility:hidden' class="btn btn-default btn-sm attribute product_attributes">Package Type</button></p>
+	  	<p><button id='diet_type' data-dimension='product' type="button" style='visibility:hidden' class="btn btn-default btn-sm attribute product_attributes">Diet Type</button></p>
+	  	<p><button id='weight' data-dimension='product' type="button" style='visibility:hidden' class="btn btn-default btn-sm attribute product_attributes">Weight</button></p>
+	  	<p><button id='weight_unit_of_measure' data-dimension='product' type="button" style='visibility:hidden' class="btn btn-default btn-sm attribute product_attributes">Weight Unit of Measure</button></p>
+	  	<p><button id='units_per_retail_case' data-dimension='product' type="button" style='visibility:hidden' class="btn btn-default btn-sm attribute product_attributes">Units Per Retail Case</button></p>
+	  	<p><button id='units_per_shipping_case' data-dimension='product' type="button" style='visibility:hidden' class="btn btn-default btn-sm attribute product_attributes">Units Per Shipping Case</button></p>
+	  	<p><button id='cases_per_pallet' data-dimension='product' type="button" style='visibility:hidden' class="btn btn-default btn-sm attribute product_attributes">Cases Per Pallet</button></p>
+	  	<p><button id='shelf_width_cm' data-dimension='product' type="button" style='visibility:hidden' class="btn btn-default btn-sm attribute product_attributes">Shelf Width CM</button></p>
+	  	<p><button id='shelf_height_cm' data-dimension='product' type="button" style='visibility:hidden' class="btn btn-default btn-sm attribute product_attributes">Shelf Height CM</button></p>
+	  	<p><button id='shelf_depth_cm' data-dimension='product' type="button" style='visibility:hidden' class="btn btn-default btn-sm attribute product_attributes">Shelf Depth CM</button></p>
 	  </div>
 	  <div class="col-md-4">
-	  	<p><button id="time_dimension" type="button" class="btn btn-default btn-lg dimension">Time</button></p>
+	  	<p><button id="time_dimension" data-dimension='time' type="button" class="btn btn-default btn-lg dimension">Time</button></p>
 
-	  	<p><button type="button" style='visibility:hidden' class="btn btn-default btn-sm attribute time_attributes">Month</button></p>
-	  	<p><button type="button" style='visibility:hidden' class="btn btn-default btn-sm attribute time_attributes">Year</button></p>
-	  	<p><button type="button" style='visibility:hidden' class="btn btn-default btn-sm attribute time_attributes">Quarter</button></p>
+	  	<p><button id='date' data-dimension='time' type="button" style='visibility:hidden' class="btn btn-default btn-sm attribute time_attributes">Date</button></p>
+	  	<p><button id='day_of_week' data-dimension='time' type="button" style='visibility:hidden' class="btn btn-default btn-sm attribute time_attributes">Day of Week</button></p>
+	  	<p><button id='day_number_in_month' data-dimension='time' type="button" style='visibility:hidden' class="btn btn-default btn-sm attribute time_attributes">Day of Month</button></p>
+	  	<p><button id='day_number_overall' data-dimension='time' type="button" style='visibility:hidden' class="btn btn-default btn-sm attribute time_attributes">Day Overall</button></p>
+	  	<p><button id='week_number_in_year' data-dimension='time' type="button" style='visibility:hidden' class="btn btn-default btn-sm attribute time_attributes">Week Number in Year</button></p>
+	  	<p><button id='week_number_overall' data-dimension='time' type="button" style='visibility:hidden' class="btn btn-default btn-sm attribute time_attributes">Week Number Overall</button></p>	  
+	  	<p><button id='Month' data-dimension='time' type="button" style='visibility:hidden' class="btn btn-default btn-sm attribute time_attributes">Month</button></p>
+	  	<p><button id='quarter' data-dimension='time' type="button" style='visibility:hidden' class="btn btn-default btn-sm attribute time_attributes">Quarter</button></p>
+	  	<p><button id='fiscal_period' data-dimension='time' type="button" style='visibility:hidden' class="btn btn-default btn-sm attribute time_attributes">Fiscal Period</button></p>
+	  	<p><button id='year' data-dimension='time' type="button" style='visibility:hidden' class="btn btn-default btn-sm attribute time_attributes">Year</button></p>
+	  	<p><button id='holiday' data-dimension='time' type="button" style='visibility:hidden' class="btn btn-default btn-sm attribute time_attributes">Holiday Flag</button></p>
 	  </div>
 	</div>
+
+<div id='modal_holder'></div>
+<!-- Button trigger modal -->
+<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+		<div class="checkbox">
+		  <label>
+		    <input class='choice' data-dimension='store' data-column='store_state' value='California' type="checkbox">
+		    1
+		  </label>
+		</div>
+		<div class="checkbox">
+		  <label>
+		    <input class='choice' data-dimension='store' data-column='store_state' value='Nevada' type="checkbox">
+		    2
+		  </label>
+		</div>
+		<div class="checkbox">
+		  <label>
+		    <input class='choice' data-dimension='store' data-column='store_state' value='New York' type="checkbox">
+		    3
+		  </label>
+		</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dimension='store' data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        modal2
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 </div>

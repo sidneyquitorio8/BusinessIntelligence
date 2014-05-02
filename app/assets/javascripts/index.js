@@ -47,6 +47,8 @@ $(document).ready(function() {
 				}
 			}
 			else {
+				//hide dimension attributes and make them white
+				$('.' + dimension_attributes).removeClass('btn-primary').addClass('btn-default');
 				$('.' + dimension_attributes).attr('style', 'visibility:hidden');
 				//if button is now white, remove from filter if it is there
 				if($(event.target).hasClass('btn-default') ) {
@@ -62,62 +64,62 @@ $(document).ready(function() {
 	//dimension handler
 	$(".dimension").click(function(event) {
 		//change dimension colors
-		if($(event.target).hasClass('btn-default') ) {
-			$(event.target).removeClass('btn-default').addClass('btn-primary');
+		if($(this).hasClass('btn-default') ) {
+			$(this).removeClass('btn-default').addClass('btn-primary');
 		}
 		else {
-			$(event.target).removeClass('btn-primary').addClass('btn-default');
+			$(this).removeClass('btn-primary').addClass('btn-default');
 		}
 
-		//hide or show store attributes & add or remove store from filters
-		if( event.target.id == 'store_dimension' ) {
-			dimensionClick("store", event);
-
-			// if($('.store_attributes').attr('style') == 'visibility:hidden' ) {
-			// 	$('.store_attributes').attr('style', '');
-			// 	//if button is now blue, add to filter if it is not there
-			// 	if($(event.target).hasClass('btn-primary') ) {
-			// 		if( dimensionInFilter('store') <= -1 ) {
-			// 			store = {};
-			// 			store['dimension'] = 'store';
-			// 			filters.push(store);
-			// 		}
-			// 	}
-			// }
-			// else {
-			// 	$('.store_attributes').attr('style', 'visibility:hidden');
-			// 	//if button is now white, remove from filter if it is there
-			// 	if($(event.target).hasClass('btn-default') ) {
-			// 		if( dimensionInFilter('store') > -1 ) {
-			// 			index = dimensionInFilter('store');
-			// 			filters.splice(index, 1);
-			// 		}
-			// 	}
-			// }
-		}
-
-		//hide or show product attributes
-		else if( event.target.id == 'product_dimension' ) {
-			dimensionClick("product", event);
-		}
-
-		//hide or show product attributes
-		else if( event.target.id == 'time_dimension' ) {
-			dimensionClick("time", event);
-		}
+		dimension = $(this).data('dimension');
+		dimensionClick(dimension,event);
 	});
 
 	//attribute handler
 	$(".attribute").click(function(event) {
 		//change dimension colors
-		if($(event.target).hasClass('btn-default') ) {
-			$(event.target).removeClass('btn-default').addClass('btn-primary');
+		if($(this).hasClass('btn-default') ) {
+			$(this).removeClass('btn-default').addClass('btn-primary');
 		}
 		else {
-			$(event.target).removeClass('btn-primary').addClass('btn-default');
+			$(this).removeClass('btn-primary').addClass('btn-default');
+		}
+		//add the clicked attribute to the corresponding dimension filter
+		dimension = $(this).data('dimension');
+
+		index = dimensionInFilter(dimension);
+		//if button is now blue add it to filter
+		if($(this).hasClass('btn-primary') ) {
+			if( filters[index]['attributes'] == null) {
+				filters[index]['attributes'] = [];
+			}
+			filters[index]['attributes'].push(this.id);
+		}
+		else if( $(this).hasClass('btn-default') ) {
+			attribute_index = filters[index]['attributes'].indexOf(this.id);
+			filters[index]['attributes'].splice(attribute_index, 1);
 		}
 	});
 
-
+	//attribute choice handler
+	$(".choice").click(function(event) {
+		//add the checked choice to filter
+		attribute = $(this).data('column');
+		dimension = $(this).data('dimension');
+		if(this.checked) {
+			index = dimensionInFilter(dimension);
+			if( filters[index]['choices'] == null) {
+				filters[index]['choices'] = {};
+			}
+			if(filters[index]['choices'][attribute] == null) {
+				filters[index]['choices'][attribute] = [];
+			}
+			filters[index]['choices'][attribute].push($(this).val());
+		}
+		else { //removed choice from filter
+			choice_index = filters[index]['choices'][attribute].indexOf($(this).val());
+			filters[index]['choices'][attribute].splice(choice_index,1);
+		}
+	});
 	
 });
