@@ -19,14 +19,14 @@ $(document).ready(function() {
 	filters.push(product);
 
     $.ajax({
-	    type: "POST",
+	    type: "GET",
 	    dataType: 'json',
 	    url: "/sql",
 	    data: {
 	        filters: filters
 	    },
 	    success: function(response) {
-	        tack_loader(response, '#boards_tacks', board_list);
+	        $('#sql').append(response);
 	    }
     });
 });

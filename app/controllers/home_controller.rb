@@ -25,7 +25,7 @@ class HomeController < ApplicationController
 	# "Kellog"
 
 
-  	@sql = "DUMMY"
+  	@sql = "DUMMY".to_json
   	render json: @sql
   end
 end
