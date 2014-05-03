@@ -134,7 +134,7 @@ $(document).ready(function() {
 	});
 
 	$('#submit_query').click(function(event) {
-		$.ajax({
+	    $.ajax({
 		    type: "GET",
 		    dataType: 'json',
 		    url: "/sql",
@@ -144,7 +144,7 @@ $(document).ready(function() {
 		    success: function(response) {
 		        $('#sql').append(response);
 		    }
-    	});
+	    });
 	});
 	
 });

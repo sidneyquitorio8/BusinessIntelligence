@@ -43,24 +43,42 @@ class HomeController < ApplicationController
   end
 
   def sql
-  	# debugger
-  	
-	# params['filters']
-	# {"0"=>{"dimension"=>"store", "attributes"=>["store_state", "store_street_address"], "choices"=>{"store_state"=>["CA", "NY"], "store_street_address"=>["1 Washington Square", "12 Twin Dolphin Rd"]}}, "1"=>{"dimension"=>"product", "attributes"=>["brand", "subcategory"], "choices"=>{"brand"=>["Kellog", "Kraft"], "subcategory"=>["Candy"]}}}
 
-	# params['filters']['0']
-	# {"dimension"=>"store", "attributes"=>["store_state", "store_street_address"], "choices"=>{"store_state"=>["CA", "NY"], "store_street_address"=>["1 Washington Square", "12 Twin Dolphin Rd"]}}
-	# params['filters']['1']
-	# {"dimension"=>"product", "attributes"=>["brand", "subcategory"], "choices"=>{"brand"=>["Kellog", "Kraft"], "subcategory"=>["Candy"]}}
+	# num_dim = params['filters'].length
+	sqlDims= ""
+	sqlAttr= ""
+	sqlwhere=""
+	sqlwhereChoice = ""
 
+	filters = params['filters']
+	# sqlDims
+	filters.each do |result|
+		dimension = result[1]['dimension']
+		sqlDims += dimension + ", "
+	end
 
-	# params['filters']['1']['dimension']
-	# "product"
-	# params['filters']['1']['choices']['brand']
-	# ["Kellog", "Kraft"]
-	# params['filters']['1']['choices']['brand'][0]
-	# "Kellog"
+	# sqlAttr
+	filters.each do |result|
+		attributes = result[1]['attributes']
+		attributes.each do |attribute|
+			sqlAttr += attribute + ", "
+		end
+	end
 
+	# sqlwhereChoice
+	filters.each do |result|
+		choices = result[1]['choices']
+		choices.each do |key, array|
+			sqlwhereChoice += " and "
+			array.each_with_index do |value, index|
+				if(array.length != index+1)
+					sqlwhereChoice += key + "=" + value + " or "
+				else
+					sqlwhereChoice += key + "=" + value
+				end
+			end
+		end
+	end
 
   	@sql = "DUMMY".to_json
   	render json: @sql
