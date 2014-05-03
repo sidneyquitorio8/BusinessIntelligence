@@ -132,5 +132,19 @@ $(document).ready(function() {
 			filters[index]['choices'][attribute].splice(choice_index,1);
 		}
 	});
+
+	$('#submit_query').click(function(event) {
+		$.ajax({
+		    type: "GET",
+		    dataType: 'json',
+		    url: "/sql",
+		    data: {
+		        filters: filters
+		    },
+		    success: function(response) {
+		        $('#sql').append(response);
+		    }
+    	});
+	});
 	
 });
