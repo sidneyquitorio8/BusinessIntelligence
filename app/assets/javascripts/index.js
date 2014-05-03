@@ -50,6 +50,10 @@ $(document).ready(function() {
 				//hide dimension attributes and make them white
 				$('.' + dimension_attributes).removeClass('btn-primary').addClass('btn-default');
 				$('.' + dimension_attributes).attr('style', 'visibility:hidden');
+
+				//uncheck associated checkboxes
+				$('.choice.' + dimension).prop('checked', false);
+
 				//if button is now white, remove from filter if it is there
 				if($(event.target).hasClass('btn-default') ) {
 					if( dimensionInFilter(dimension) > -1 ) {
@@ -94,14 +98,21 @@ $(document).ready(function() {
 				filters[index]['attributes'] = [];
 			}
 			filters[index]['attributes'].push(this.id);
+
+			//show modal
+			$('#' + this.id +'_modal').modal('show');
 		}
 		else if( $(this).hasClass('btn-default') ) {
 			attribute_index = filters[index]['attributes'].indexOf(this.id);
 			filters[index]['attributes'].splice(attribute_index, 1);
+
+			//uncheck associated checkboxes
+			$('.choice.' + this.id).prop('checked', false);
+
 		}
 	});
 
-	//attribute choice handler
+	//choice handler
 	$(".choice").click(function(event) {
 		//add the checked choice to filter
 		attribute = $(this).data('column');

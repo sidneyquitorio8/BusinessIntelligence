@@ -81,62 +81,31 @@
 	  </div>
 	</div>
 
-<div id='modal_holder'></div>
-<!-- Button trigger modal -->
-<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-  Launch demo modal
-</button>
-
+<div id='modal_holder'>
 <!-- Modal -->
-<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-      </div>
-      <div class="modal-body">
-		<div class="checkbox">
-		  <label>
-		    <input class='choice' data-dimension='store' data-column='store_state' value='California' type="checkbox">
-		    1
-		  </label>
+	<% @checkboxes.each do |row| %>
+		<div class="modal fade" id="<%= row['attribute'] %>_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		        <h4 class="modal-title" id="myModalLabel">Choices</h4>
+		      </div>
+		      <div class="modal-body">
+		      	<% row['choices'].each do |choice| %>
+					<div class="checkbox">
+					  <label>
+					    <input class='choice <%= row['attribute'] %> <%= row['dimension'] %>' data-dimension='<%= row['dimension'] %>' data-column='<%= row['attribute'] %>' value='<%= choice[0] %>' type="checkbox"><%= choice[0] %></label>
+					</div>
+				<% end %>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dimension='store' data-dismiss="modal">Close</button>
+		      </div>
+		    </div>
+		  </div>
 		</div>
-		<div class="checkbox">
-		  <label>
-		    <input class='choice' data-dimension='store' data-column='store_state' value='Nevada' type="checkbox">
-		    2
-		  </label>
-		</div>
-		<div class="checkbox">
-		  <label>
-		    <input class='choice' data-dimension='store' data-column='store_state' value='New York' type="checkbox">
-		    3
-		  </label>
-		</div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dimension='store' data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-      </div>
-      <div class="modal-body">
-        modal2
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
+	<% end %>
 </div>
 
 </div>
