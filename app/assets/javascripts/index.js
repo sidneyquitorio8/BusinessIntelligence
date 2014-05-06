@@ -146,7 +146,18 @@ $(document).ready(function() {
 			        filters: filters
 			    },
 			    success: function(response) {
-			        $('#sql').html(response);
+			    	$('#sql_results').html('<tr id="sql_headers"></tr>');
+			        for(i=0; i<response['headers'].length; i++) {
+			        	$('#sql_headers').append('<th>'+ response['headers'][i] +'</th>')
+			        }
+			        $.each(response['results'], function(key, val) {
+			        	table_row = "<tr>";
+    					$.each(val, function(k, v) {
+    						table_row += "<td>" + v + "</td>";
+						});
+						table_row += "</tr>";
+						$('#sql_results').append(table_row);
+					});
 			    }
 		    });
 		}

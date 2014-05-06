@@ -1,4 +1,5 @@
 class HomeController < ApplicationController
+  require 'terminal-table/import'
 
   def index
 	sql = "Select distinct(city) from store"
@@ -131,11 +132,11 @@ class HomeController < ApplicationController
 	elsif((sqlDims.include?"store") && (sqlDims.include?"time"))
 	  sqlwhere= "where store.store_key = `sales fact`.store_key and time.time_key = `sales fact`.time_key "
 	elsif((sqlDims.include?"store"))
-	  sqlWhere= "where store.store_key = `sales fact`.store_key "
+	  sqlwhere= "where store.store_key = `sales fact`.store_key "
 	elsif((sqlDims.include?"product"))
-	  sqlWhere= "where store.product_key = `sales fact`.product_key "
+	  sqlwhere= "where product.product_key = `sales fact`.product_key "
 	elsif((sqlDims.include?"time"))
-	  sqlWhere= "where store.time_key = `sales fact`.time_key "
+	  sqlwhere= "where time.time_key = `sales fact`.time_key "
 	end
 	#debugger
 	sqlstring =
@@ -150,6 +151,13 @@ class HomeController < ApplicationController
 	# 	sqltable = ActiveRecord::Base.connection.execute(sqlstring)
 	# @sql = sqltable.to_json
 
-	render json: @sql
+	client = Mysql2::Client.new(:host => "localhost", :username => "root", :database => 'businessintelligence_dev')
+	results = client.query(sqlstring)
+	@hash = {}
+	@hash['headers'] = results.fields
+	@hash['results'] = results
+
+	# @records_array = ActiveRecord::Base.connection.execute(sqlstring)
+	render json: @hash
 	end
 end

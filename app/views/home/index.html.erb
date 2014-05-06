@@ -97,8 +97,11 @@
      	 <p><button id='holiday_flag' data-dimension='time' type="button" style='visibility:hidden' class="btn btn-default btn-sm attribute time_attributes">Holiday Flag</button></p>
       </div>
     </div>
-<h1> SQL </h1>
-<p id='sql'></p>
+
+<table id="sql_results" class="table table-striped">
+<tr id="sql_headers"></tr>
+</table>
+
 <div id='modal_holder'>
 <!-- Modal -->
     <% @checkboxes.each do |row| %>
