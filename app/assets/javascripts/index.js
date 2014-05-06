@@ -134,17 +134,22 @@ $(document).ready(function() {
 	});
 
 	$('#submit_query').click(function(event) {
-	    $.ajax({
-		    type: "GET",
-		    dataType: 'json',
-		    url: "/sql",
-		    data: {
-		        filters: filters
-		    },
-		    success: function(response) {
-		        $('#sql').append(response);
-		    }
-	    });
+		if(filters.length == 0) {
+			alert("Must select at least 1 dimension");
+		}
+		else {
+		    $.ajax({
+			    type: "GET",
+			    dataType: 'json',
+			    url: "/sql",
+			    data: {
+			        filters: filters
+			    },
+			    success: function(response) {
+			        $('#sql').html(response);
+			    }
+		    });
+		}
 	});
 	
 });
