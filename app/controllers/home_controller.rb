@@ -1,5 +1,4 @@
 class HomeController < ApplicationController
-  require 'terminal-table/import'
 
   def index
 	sql = "Select distinct(city) from store"
