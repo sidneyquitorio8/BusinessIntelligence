@@ -105,7 +105,10 @@ $(document).ready(function() {
 		else if( $(this).hasClass('btn-default') ) {
 			attribute_index = filters[index]['attributes'].indexOf(this.id);
 			filters[index]['attributes'].splice(attribute_index, 1);
-
+			//delete associated choices
+			delete filters[index]['choices'][this.id]
+			// choices_index = filters[index]['choices'].indexOf(this.id);
+			// filters[index]['choices'].splice(choices_index, 1);
 			//uncheck associated checkboxes
 			$('.choice.' + this.id).prop('checked', false);
 
@@ -146,6 +149,9 @@ $(document).ready(function() {
 			        filters: filters
 			    },
 			    success: function(response) {
+			    	$('#count').html(response['count']);
+			    	$('#query').html(response['query']);
+
 			    	$('#sql_results').html('<tr id="sql_headers"></tr>');
 			        for(i=0; i<response['headers'].length; i++) {
 			        	$('#sql_headers').append('<th>'+ response['headers'][i] +'</th>')

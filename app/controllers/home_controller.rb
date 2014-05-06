@@ -153,6 +153,8 @@ class HomeController < ApplicationController
 	client = Mysql2::Client.new(:host => "localhost", :username => "root", :database => 'businessintelligence_dev')
 	results = client.query(sqlstring)
 	@hash = {}
+	@hash['query'] = sqlstring
+	@hash['count'] = results.count
 	@hash['headers'] = results.fields
 	@hash['results'] = results
 
