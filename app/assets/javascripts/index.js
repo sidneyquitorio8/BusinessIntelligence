@@ -149,8 +149,8 @@ $(document).ready(function() {
 			        filters: filters
 			    },
 			    success: function(response) {
-			    	$('#count').html(response['count']);
-			    	$('#query').html(response['query']);
+			    	// $('#count').html(response['count']);
+			    	// $('#query').html(response['query']);
 
 			    	$('#sql_results').html('<tr id="sql_headers"></tr>');
 			        for(i=0; i<response['headers'].length; i++) {
